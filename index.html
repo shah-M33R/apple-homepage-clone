@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./tailwind.css">
+    <title>Apple</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/logo/apple.svg">
+    <link rel="icon" type="image/png" sizes="16x16" href="./images/logo/apple.svg">
+    <link rel="shortcut icon" href="./images/logo/apple.svg">
+    <style>
+        .rounder > div { border-radius: 1rem; }
+        .rainbow-text {
+            background: linear-gradient(to right, rgb(84, 84, 250), rgb(176, 76, 247), rgb(248, 70, 70), orange);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        @media (min-width: 735px) {
+            .tab-hide { display: none; }
+            .tab-show { display: flex; }
+            .tab-bento { display: grid; }
+        }
+        @media (min-width: 1069px) {
+            .desk-hide { display: none; }
+            .desk-show { display: flex; }
+            .desk-bento { display: grid; }
+        }
+        @media (max-width: 860px) {
+            .bar { height: 1.2em; }
+        }
+        @media (min-width: 860px) {
+            .bar { height: 1em; }
+            .bar-hide { display: none; }
+            .bar-show { display: flex; }
+        }
+        /* Sidebar Styling */
+        .links-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+            z-index: 50;
+            display: flex;
+            flex-direction: column;
+            padding: 0.65rem 0.65rem 0 3rem;
+        }
+        /* Sidebar Overlay */
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+            z-index: 40;
+            pointer-events: none;
+        }
+        /* Toggle Sidebar when Checkbox is Checked */
+        #sidebar-active:checked ~ .links-container {
+            transform: translateY(0);
+        }
+        #sidebar-active:checked ~ .sidebar-overlay {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+    </style>
+</head>
+<body class="max-w-[2560px] mx-auto">
+
+    <input type="checkbox" id="sidebar-active" class="hidden">
+    <header class="backdrop-blur-lg bg-white/70 fixed top-0 left-0 right-0 z-50 bar-hide">
+        <nav class="bg-transparent flex justify-between p-3">
+            <a href="#"><img src="./images/logo/apple.svg" alt="Apple logo" class="bar w-auto"></a>
+            <div>
+                <a href="https://www.apple.com/us/search"><img src="./images/logo/search.svg" alt="Search more" class="bar w-auto inline-block"></a>
+                <a href="https://www.apple.com/us/shop/goto/bag"><img src="./images/logo/bag.svg" alt="Visit shop" class="bar w-auto ml-5 inline-block"></a>
+                <label for="sidebar-active" class="cursor-pointer">
+                    <img src="./images/logo/menu.svg" alt="Open menu" class="bar w-auto ml-5 inline-block">
+                </label>
+            </div>
+        </nav>
+    </header>
+
+    <label for="sidebar-active" class="sidebar-overlay"></label>
+    
+
+    <div class="links-container bar-hide">
+        <ul class="space-y-4 text-2xl font-medium">
+            <label for="sidebar-active" class="mt-6 cursor-pointer text-gray-500 hover:text-gray-900">
+                <img src="./images/logo/close.svg" alt="Close menu" class="bar ml-auto">
+            </label>
+            <li><a href="https://www.apple.com/us/shop/goto/store">Store</a></li>
+            <li><a href="https://www.apple.com/mac/">Mac</a></li>
+            <li><a href="https://www.apple.com/ipad/">iPad</a></li>
+            <li><a href="https://www.apple.com/iphone/">iPhone</a></li>
+            <li><a href="https://www.apple.com/watch/">Watch</a></li>
+            <li><a href="https://www.apple.com/apple-vision-pro/">Vision</a></li>
+            <li><a href="https://www.apple.com/airpods/">AirPods</a></li>
+            <li><a href="https://www.apple.com/tv-home/">TV & Home</a></li>
+            <li><a href="https://www.apple.com/entertainment/">Entertainment</a></li>
+            <li><a href="https://www.apple.com/us/shop/goto/buy_accessories">Accessories</a></li>
+            <li><a href="https://support.apple.com/?cid=gn-ols-home-hp-tab">Support</a></li>
+        </ul>
+    </div>
+    <div class="hidden bar-show backdrop-blur-lg bg-white/70 fixed top-0 left-0 right-0 z-50 justify-between items-center ">
+        <nav class="flex gap-5 bg-transparent justify-between items-center py-3 px-10 mx-auto max-w-[1060px] ">
+            <a href="#"><img src="./images/logo/apple.svg" alt="Apple logo" class="bar w-auto "></a>
+            <a href="https://www.apple.com/us/shop/goto/store">Store</a>
+            <a href="https://www.apple.com/mac/">Mac</a>
+            <a href="https://www.apple.com/ipad/">iPad</a>
+            <a href="https://www.apple.com/iphone/">iPhone</a>
+            <a href="https://www.apple.com/watch/">Watch</a>
+            <a href="https://www.apple.com/apple-vision-pro/">Vision</a>
+            <a href="https://www.apple.com/airpods/">AirPods</a>
+            <a href="https://www.apple.com/tv-home/">TV & Home</a>
+            <a href="https://www.apple.com/entertainment/">Entertainment</a>
+            <a href="https://www.apple.com/us/shop/goto/buy_accessories">Accessories</a>
+            <a href="https://support.apple.com/?cid=gn-ols-home-hp-tab">Support</a>
+            <a href="https://www.apple.com/us/search"><img src="./images/logo/search.svg" alt="Search more" class="bar w-auto inline-block "></a>
+            <a href="https://www.apple.com/us/shop/goto/bag"><img src="./images/logo/bag.svg" alt="Visit shop" class="bar w-auto inline-block"></a>
+        </nav>
+    </div>
+    
+        
+
+    <main>
+        <section class="tab-hide flex flex-col justify-center items-center mt-15 mb-6">
+            <img src="./images/logo/cross.jpg" alt="Red cross" class="h-8 aspect-square ">
+            <a href="https://apple.co/southerncaliforniawildfires" class="text-center mt-1 text-blue-500 leading-[1.2em] hover:underline">Donate to 2025 Southern<br>California wildfires</a>
+        </section>
+        <section class="hidden tab-show gap-5 justify-center items-center mt-15 mb-6">
+            <img src="./images/logo/cross.jpg" alt="Red cross" class="h-10 aspect-square ">
+            <a href="https://apple.co/southerncaliforniawildfires" class="text-center mt-1 text-blue-500 text-[1.2em] hover:underline">Donate to 2025 Southern California wildfires</a>
+        </section>
+        <section class="tab-hide relative flex items-center justify-center overflow-hidden mb-3 ">
+            <img src="./images/val/sm.png" alt="Valentine's day" class="object-cover object-center min-w-[735px]">
+            <div class="absolute bottom-10 left-0 right-0 flex flex-col justify-center items-center text-black">
+                <h1 class="text-3xl font-medium ">Valentine's Day</h1>
+                <p class="text-center text-[1.2em] ">Find something special<br>for your special someone.</p>
+                <a href="https://www.apple.com/us/shop/goto/store" class="bg-blue-500 px-5 py-[0.3em] rounded-full text-white mt-5 ">Shop</a>
+            </div>
+        </section>
+        <section class="hidden tab-show desk-hide relative items-center justify-center overflow-hidden mb-3 ">
+            <img src="./images/val/md.png" alt="Valentine's day" class="object-cover object-center min-w-[1068px]">
+            <div class="absolute bottom-10 left-0 right-0 flex flex-col justify-center items-center text-black">
+                <h1 class="text-5xl font-medium ">Valentine's Day</h1>
+                <p class="text-center text-[1.5em] ">Find something special for your special someone.</p>
+                <a href="https://www.apple.com/us/shop/goto/store" class="bg-blue-500 px-5 py-[0.3em] rounded-full text-white mt-5 text-[1.3em]">Shop</a>
+            </div>
+        </section>
+        <section class="hidden desk-show relative items-center justify-center overflow-hidden mb-3 ">
+            <img src="./images/val/lg.png" alt="Valentine's day" class="object-cover object-center min-h-[720px] w-auto">
+            <div class="absolute bottom-20 left-0 right-0 flex flex-col justify-center items-center text-black">
+                <h1 class="text-6xl font-medium ">Valentine's Day</h1>
+                <p class="text-center text-[1.7em] ">Find something special for your special someone.</p>
+                <a href="https://www.apple.com/us/shop/goto/store" class="bg-blue-500 px-5 py-[0.3em] rounded-full text-white mt-5 text-[1.5em]">Shop</a>
+            </div>
+        </section>
+        <section class="tab-hide relative flex items-center justify-center overflow-hidden mb-3 ">
+            <img src="./images/16pro/sm.jpg" alt="iPhone 16 Pro" class="object-cover object-center min-w-[735px]">
+            <div class="absolute bottom-10 left-0 right-0 flex flex-col justify-center items-center text-black">
+                <h1 class="text-3xl font-medium text-white">iPhone 16 Pro</h1>
+                <p class="text-center text-[1.2em] text-white">Hello, Apple Intelligence.</p>
+                <div class="flex gap-4 ">
+                    <a href="https://www.apple.com/iphone-16-pro/" class="bg-blue-500 px-5 py-[0.3em] rounded-full text-white mt-5 ">Learn more</a>
+                    <a href="https://www.apple.com/us/shop/goto/buy_iphone/iphone_16_pro" class="text-blue-500 px-5 py-[0.3em] rounded-full mt-5 border-blue-500 border-1 hover:bg-blue-500 hover:text-white  ">Buy</a>
+                </div>
+            </div>
+        </section>
+        <section class="hidden tab-show desk-hide relative items-center justify-center overflow-hidden mb-3 ">
+            <img src="./images/16pro/md.jpg" alt="iPhone 16 Pro" class="object-cover object-center min-w-[1068px]">
+            <div class="absolute top-10 left-0 right-0 flex flex-col justify-center items-center text-black">
+                <h1 class="text-5xl font-medium text-white">iPhone 16 Pro</h1>
+                <p class="text-center text-[1.5em] text-white">Hello, Apple Intelligence.</p>
+                <div class="flex gap-4 ">
+                    <a href="https://www.apple.com/iphone-16-pro/" class="bg-blue-500 px-5 py-[0.3em] rounded-full text-white mt-5 text-[1.3em]">Learn more</a>
+                    <a href="https://www.apple.com/us/shop/goto/buy_iphone/iphone_16_pro" class="text-blue-500 px-5 py-[0.3em] rounded-full mt-5 border-blue-500 border-1 text-[1.3em] hover:bg-blue-500 hover:text-white ">Buy</a>
+                </div>
+            </div>
+        </section>
+        <section class="hidden desk-show relative items-center justify-center overflow-hidden mb-3 ">
+            <img src="./images/16pro/lg.jpg" alt="iPhone 16 Pro" class="object-cover object-center min-h-[720px]">
+            <div class="absolute top-10 left-0 right-0 flex flex-col justify-center items-center text-black">
+                <h1 class="text-6xl font-medium text-white">iPhone 16 Pro</h1>
+                <p class="text-center text-[1.7em] text-white">Hello, Apple Intelligence.</p>
+                <div class="flex gap-4 ">
+                    <a href="https://www.apple.com/iphone-16-pro/" class="bg-blue-500 px-5 py-[0.3em] rounded-full text-white mt-5 text-[1.5em]">Learn more</a>
+                    <a href="https://www.apple.com/us/shop/goto/buy_iphone/iphone_16_pro" class="text-blue-500 px-5 py-[0.3em] rounded-full mt-5 border-blue-500 border-1 text-[1.5em] hover:bg-blue-500 hover:text-white ">Buy</a>
+                </div>
+            </div>
+        </section>
+        <section class="tab-hide relative flex items-center justify-center overflow-hidden mb-3">
+            <img src="./images/iphone16/sm.jpg" alt="iPhone 16" class="object-cover object-center min-w-[735px]">
+            <div class="absolute top-10  left-0 right-0 flex flex-col justify-center items-center text-black">
+                <h1 class="text-3xl font-medium text-white">iPhone 16</h1>
+                <p class="text-center text-[1.2em] text-white">Hello, Apple Intelligence.</p>
+                <div class="flex gap-4 ">
+                    <a href="https://www.apple.com/iphone-16/" class="bg-white px-5 py-[0.3em] rounded-full text-black mt-5 ">Learn more</a>
+                    <a href="https://www.apple.com/us/shop/goto/buy_iphone/iphone_16" class="text-white px-5 py-[0.3em] rounded-full mt-5 border-white border-1 hover:text-black hover:bg-white ">Buy</a>
+                </div>
+            </div>
+        </section>
+        <section class="hidden tab-show desk-hide relative items-center justify-center overflow-hidden">
+            <img src="./images/iphone16/md.jpg" alt="iPhone 16" class="object-cover object-center min-w-[1068px]">
+            <div class="absolute top-10  left-0 right-0 flex flex-col justify-center items-center text-black">
+                <h1 class="text-5xl font-medium text-white">iPhone 16</h1>
+                <p class="text-center text-[1.5em] text-white">Hello, Apple Intelligence.</p>
+                <div class="flex gap-4 ">
+                    <a href="https://www.apple.com/iphone-16/" class="bg-white px-5 py-[0.3em] text-[1.3em] rounded-full text-black mt-5 ">Learn more</a>
+                    <a href="https://www.apple.com/us/shop/goto/buy_iphone/iphone_16" class="text-white px-5 py-[0.3em] text-[1.3em] rounded-full mt-5 border-white border-1 hover:text-black hover:bg-white ">Buy</a>
+                </div>
+            </div>
+        </section>
+        <section class="hidden desk-show relative items-center justify-center overflow-hidden mt-3">
+            <img src="./images/iphone16/lg.jpg" alt="iPhone 16" class="object-cover object-center min-h-[720px]">
+            <div class="absolute top-10  left-0 right-0 flex flex-col justify-center items-center text-black">
+                <h1 class="text-6xl font-medium text-white">iPhone 16</h1>
+                <p class="text-center text-[1.7em] text-white">Hello, Apple Intelligence.</p>
+                <div class="flex gap-4 ">
+                    <a href="https://www.apple.com/iphone-16/" class="bg-white px-5 py-[0.3em] rounded-full text-black mt-5 text-[1.5em]">Learn more</a>
+                    <a href="https://www.apple.com/us/shop/goto/buy_iphone/iphone_16" class="text-white px-5 py-[0.3em] rounded-full mt-5 border-white border-1 text-[1.5em] hover:text-black hover:bg-white">Buy</a>
+                </div>
+            </div>
+        </section>
+        <section class="tab-hide relative flex items-center justify-center overflow-hidden mb-3">
+            <img src="./images/watch/sm.jpg" alt="Apple Watch" class="object-cover object-center min-w-[735px]">
+            <div class="absolute top-10  left-0 right-0 flex flex-col justify-center items-center text-black">
+                <div class="flex gap-1  items-center  ">
+                    <img src="./images/logo/apple.svg" alt="Apple logo" class="h-6 w-auto ">
+                    <h1 class="text-3xl font-bold text-black">WATCH</h1>
+                </div>
+                <p class="font-bold text-black">SERIES 10</p>
+                <p class="text-center text-[1.2em] text-black">Thinstant classic.</p>
+                <div class="flex gap-4 ">
+                    <a href="https://www.apple.com/apple-watch-series-10/" class="bg-blue-500 px-5 py-[0.3em] rounded-full text-white mt-5 ">Learn more</a>
+                    <a href="https://www.apple.com/us/shop/goto/buy_watch/apple_watch_series_10" class="text-blue-500 px-5 py-[0.3em] rounded-full mt-5 border-blue-500 border-1 hover:bg-blue-500 hover:text-white  ">Buy</a>
+                </div>
+            </div>
+        </section>
+        <section class="tab-hide relative flex items-center justify-center overflow-hidden mb-3">
+            <img src="./images/unity/sm.jpg" alt="Apple Watch Unity" class="object-cover object-center min-w-[735px]">
+            <div class="absolute top-10  left-0 right-0 flex flex-col justify-center items-center text-black">
+                <div class="flex gap-1  items-center  ">
+                    <img src="./images/logo/white.svg" alt="Apple logo" class="h-6 w-auto ">
+                    <h1 class="text-3xl font-bold text-white">WATCH</h1>
+                </div>
+                <p class="text-center text-[1.2em] text-white">United by rhythm. Discover the new<br>Black Unity watch band and face.</p>
+                <a href="https://www.apple.com/us/shop/goto/product/MDF54" class="text-black px-5 py-[0.3em] rounded-full mt-5 bg-white">Buy</a>
+            </div>
+        </section>
+        <section class="tab-hide relative flex items-center justify-center overflow-hidden mb-3">
+            <img src="./images/air/sm.jpg" alt="MacBook Air" class="object-cover object-center min-w-[735px]">
+            <div class="absolute top-10  left-0 right-0 flex flex-col justify-center items-center text-black">
+                <h1 class="text-3xl font-medium text-black">MacBook Air</h1>
+                <p class="text-center text-[1.2em] text-black">Learn. Mean. M3 machine.</p>
+                <div class="flex gap-4 ">
+                    <a href="https://www.apple.com/macbook-air/" class="bg-blue-500 px-5 py-[0.3em] rounded-full text-white mt-5 ">Learn more</a>
+                    <a href="https://www.apple.com/us/shop/goto/buy_mac/macbook_air" class="text-blue-500 px-5 py-[0.3em] rounded-full mt-5 border-blue-500 border-1 hover:bg-blue-500 hover:text-white ">Buy</a>
+                </div>
+            </div>
+        </section>
+        <section class="tab-hide relative flex items-center justify-center overflow-hidden mb-3">
+            <img src="./images/ipad/sm.jpg" alt="iPad Pro" class="object-cover object-center min-w-[735px]">
+            <div class="absolute top-10  left-0 right-0 flex flex-col justify-center items-center text-black">
+                <h1 class="text-3xl font-medium text-white">iPad Pro</h1>
+                <p class="text-center text-[1.2em] text-white">Unbelievably thin.<br>Incredibly powerful</p>
+                <div class="flex gap-4 ">
+                    <a href="https://www.apple.com/ipad-pro/" class="bg-blue-500 px-5 py-[0.3em] rounded-full text-white mt-5 ">Learn more</a>
+                    <a href="https://www.apple.com/us/shop/goto/ipad_pro/select" class="text-blue-500 px-5 py-[0.3em] rounded-full mt-5 border-blue-500 border-1  ">Buy</a>
+                </div>
+            </div>
+            <div class="absolute bottom-10  left-0 right-0 flex flex-col justify-center items-center">
+                <h1 class="rainbow-text">Hello, Apple Intelligence.</h1>
+            </div>
+        </section>
+        <section class="tab-hide relative flex items-center justify-center overflow-hidden mb-3 ">
+            <img src="./images/trade/sm.jpg" alt="Trade-In Offer" class="object-cover object-center min-w-[735px]">
+            <div class="absolute top-10 left-0 right-0 flex flex-col justify-center items-center text-black">
+                <div class="flex gap-1  items-center  ">
+                    <img src="./images/logo/apple.svg" alt="Apple logo" class="h-6 w-auto ">
+                    <h1 class="text-3xl font-medium text-black">Trade-In</h1>
+                </div>
+                <p class="text-center text-[1.2em] ">Get &#36;180-&#36;650 in credit when<br>you trade in iPhone 12 or higher.<sup>1</sup></p>
+                <a href="https://www.apple.com/us/shop/goto/trade_in" class="bg-blue-500 px-5 py-[0.3em] rounded-full text-white mt-5 ">Get your estimate</a>
+            </div>
+        </section>
+        <section class="tab-hide relative flex items-center justify-center overflow-hidden mb-3 ">
+            <img src="./images/card/sm.jpg" alt="Trade-In Offer" class="object-cover object-center min-w-[735px]">
+            <div class="absolute top-10 left-0 right-0 flex flex-col justify-center items-center text-black">
+                <div class="flex gap-1  items-center  ">
+                    <img src="./images/logo/apple.svg" alt="Apple logo" class="h-6 w-auto ">
+                    <h1 class="text-3xl font-medium text-black">Card</h1>
+                </div>
+                <p class="text-center text-[1.2em] ">Get up to 3% Daily Cash back<br>with every purchase.</p>
+                <div class="flex gap-4 ">
+                    <a href="https://www.apple.com/apple-card/" class="bg-blue-500 px-5 py-[0.3em] rounded-full text-white mt-5 ">Learn more</a>
+                    <a href="https://card.apple.com/apply/application?referrer=cid%3Dapy-200-10000036&start=false" class="text-blue-500 px-5 py-[0.3em] rounded-full mt-5 border-blue-500 border-1 hover:bg-blue-500 hover:text-white ">Apply Now</a>
+                </div>
+            </div>
+        </section>
+        <div class="hidden tab-bento desk-hide grid-cols-2 gap-3 p-3 ">
+            <section class="relative flex items-center justify-center overflow-hidden ">
+                <img src="./images/watch/sm.jpg" alt="Apple Watch" class="object-cover object-center min-w-[735px]">
+                <div class="absolute top-10  left-0 right-0 flex flex-col justify-center items-center text-black">
+                    <div class="flex gap-1  items-center  ">
+                        <img src="./images/logo/apple.svg" alt="Apple logo" class="h-6 w-auto ">
+                        <h1 class="text-3xl font-bold text-black">WATCH</h1>
+                    </div>
+                    <p class="font-bold text-black">SERIES 10</p>
+                    <p class="text-center text-[1.2em] text-black">Thinstant classic.</p>
+                    <div class="flex gap-4 ">
+                        <a href="https://www.apple.com/apple-watch-series-10/" class="bg-blue-500 px-5 py-[0.3em] rounded-full text-white mt-5 ">Learn more</a>
+                        <a href="https://www.apple.com/us/shop/goto/buy_watch/apple_watch_series_10" class="text-blue-500 px-5 py-[0.3em] rounded-full mt-5 border-blue-500 border-1  hover:bg-blue-500 hover:text-white ">Buy</a>
+                    </div>
+                </div>
+            </section>
+            <section class="relative flex items-center justify-center overflow-hidden ">
+                <img src="./images/unity/sm.jpg" alt="Apple Watch Unity" class="object-cover object-center min-w-[735px]">
+                <div class="absolute top-10  left-0 right-0 flex flex-col justify-center items-center text-black">
+                    <div class="flex gap-1  items-center  ">
+                        <img src="./images/logo/white.svg" alt="Apple logo" class="h-6 w-auto ">
+                        <h1 class="text-3xl font-bold text-white">WATCH</h1>
+                    </div>
+                    <p class="text-center text-[1.2em] text-white">United by rhythm. Discover the new<br>Black Unity watch band and face.</p>
+                    <a href="https://www.apple.com/us/shop/goto/product/MDF54" class="text-black px-5 py-[0.3em] rounded-full mt-5 bg-white">Buy</a>
+                </div>
+            </section>
+            <section class="relative flex items-center justify-center overflow-hidden ">
+                <img src="./images/air/sm.jpg" alt="MacBook Air" class="object-cover object-center min-w-[735px]">
+                <div class="absolute top-10  left-0 right-0 flex flex-col justify-center items-center text-black">
+                    <h1 class="text-3xl font-medium text-black">MacBook Air</h1>
+                    <p class="text-center text-[1.2em] text-black">Learn. Mean. M3 machine.</p>
+                    <div class="flex gap-4 ">
+                        <a href="https://www.apple.com/macbook-air/" class="bg-blue-500 px-5 py-[0.3em] rounded-full text-white mt-5 ">Learn more</a>
+                        <a href="https://www.apple.com/us/shop/goto/buy_mac/macbook_air" class="text-blue-500 px-5 py-[0.3em] rounded-full mt-5 border-blue-500 border-1 hover:bg-blue-500 hover:text-white ">Buy</a>
+                    </div>
+                </div>
+            </section>
+            <section class="relative flex items-center justify-center overflow-hidden ">
+                <img src="./images/ipad/sm.jpg" alt="iPad Pro" class="object-cover object-center min-w-[735px]">
+                <div class="absolute top-10  left-0 right-0 flex flex-col justify-center items-center text-black">
+                    <h1 class="text-3xl font-medium text-white">iPad Pro</h1>
+                    <p class="text-center text-[1.2em] text-white">Unbelievably thin. Incredibly powerful</p>
+                    <div class="flex gap-4 ">
+                        <a href="https://www.apple.com/ipad-pro/" class="bg-blue-500 px-5 py-[0.3em] rounded-full text-white mt-5 ">Learn more</a>
+                        <a href="https://www.apple.com/us/shop/goto/ipad_pro/select" class="text-blue-500 px-5 py-[0.3em] rounded-full mt-5 border-blue-500 border-1  hover:bg-blue-500 hover:text-white ">Buy</a>
+                    </div>
+                </div>
+                <div class="absolute bottom-10  left-0 right-0 flex flex-col justify-center items-center">
+                    <h1 class="rainbow-text">Hello, Apple Intelligence.</h1>
+                </div>
+            </section>
+            <section class="relative flex items-center justify-center overflow-hidden  ">
+                <img src="./images/trade/sm.jpg" alt="Trade-In Offer" class="object-cover object-center min-w-[735px]">
+                <div class="absolute top-10 left-0 right-0 flex flex-col justify-center items-center text-black">
+                    <div class="flex gap-1  items-center  ">
+                        <img src="./images/logo/apple.svg" alt="Apple logo" class="h-6 w-auto ">
+                        <h1 class="text-3xl font-medium text-black">Trade-In</h1>
+                    </div>
+                    <p class="text-center text-[1.2em] ">Get &#36;180-&#36;650 in credit when<br>you trade in iPhone 12 or higher.<sup>1</sup></p>
+                    <a href="https://www.apple.com/us/shop/goto/trade_in" class="bg-blue-500 px-5 py-[0.3em] rounded-full text-white mt-5 ">Get your estimate</a>
+                </div>
+            </section>
+            <section class="relative flex items-center justify-center overflow-hidden  ">
+                <img src="./images/card/sm.jpg" alt="Trade-In Offer" class="object-cover object-center min-w-[735px]">
+                <div class="absolute top-10 left-0 right-0 flex flex-col justify-center items-center text-black">
+                    <div class="flex gap-1  items-center  ">
+                        <img src="./images/logo/apple.svg" alt="Apple logo" class="h-6 w-auto ">
+                        <h1 class="text-3xl font-medium text-black">Card</h1>
+                    </div>
+                    <p class="text-center text-[1.2em] ">Get up to 3% Daily Cash back<br>with every purchase.</p>
+                    <div class="flex gap-4 ">
+                        <a href="https://www.apple.com/apple-card/" class="bg-blue-500 px-5 py-[0.3em] rounded-full text-white mt-5 ">Learn more</a>
+                        <a href="https://card.apple.com/apply/application?referrer=cid%3Dapy-200-10000036&start=false" class="text-blue-500 px-5 py-[0.3em] rounded-full mt-5 border-blue-500 border-1 hover:bg-blue-500 hover:text-white ">Apply Now</a>
+                    </div>
+                </div>
+        </div>
+        <div class="hidden desk-bento grid-cols-2 gap-3 p-3">
+            <section class="relative flex items-center justify-center overflow-hidden ">
+                <img src="./images/watch/lg.jpg" alt="Apple Watch" class="object-cover object-center min-h-[600px]">
+                <div class="absolute top-10  left-0 right-0 flex flex-col justify-center items-center text-black">
+                    <div class="flex gap-1  items-center  ">
+                        <img src="./images/logo/apple.svg" alt="Apple logo" class="h-6 w-auto ">
+                        <h1 class="text-3xl font-bold text-black">WATCH</h1>
+                    </div>
+                    <p class="font-bold text-black">SERIES 10</p>
+                    <p class="text-center text-[1.2em] text-black">Thinstant classic.</p>
+                    <div class="flex gap-4 ">
+                        <a href="https://www.apple.com/apple-watch-series-10/" class="bg-blue-500 px-5 py-[0.3em] rounded-full text-white mt-5 ">Learn more</a>
+                        <a href="https://www.apple.com/us/shop/goto/buy_watch/apple_watch_series_10" class="text-blue-500 px-5 py-[0.3em] rounded-full mt-5 border-blue-500 border-1 hover:bg-blue-500 hover:text-white   ">Buy</a>
+                    </div>
+                </div>
+            </section>
+            <section class="relative flex items-center justify-center overflow-hidden ">
+                <img src="./images/unity/lg.jpg" alt="Apple Watch Unity" class="object-cover object-center min-h-[600px]">
+                <div class="absolute top-10  left-0 right-0 flex flex-col justify-center items-center text-black">
+                    <div class="flex gap-1  items-center  ">
+                        <img src="./images/logo/white.svg" alt="Apple logo" class="h-6 w-auto ">
+                        <h1 class="text-3xl font-bold text-white">WATCH</h1>
+                    </div>
+                    <p class="text-center text-[1.2em] text-white">United by rhythm. Discover the new<br>Black Unity watch band and face.</p>
+                    <a href="https://www.apple.com/us/shop/goto/product/MDF54" class="text-black px-5 py-[0.3em] rounded-full mt-5 bg-white">Buy</a>
+                </div>
+            </section>
+            <section class="relative flex items-center justify-center overflow-hidden ">
+                <img src="./images/air/lg.jpg" alt="MacBook Air" class="object-cover object-center min-h-[600px]">
+                <div class="absolute top-10  left-0 right-0 flex flex-col justify-center items-center text-black">
+                    <h1 class="text-3xl font-medium text-black">MacBook Air</h1>
+                    <p class="text-center text-[1.2em] text-black">Learn. Mean. M3 machine.</p>
+                    <div class="flex gap-4 ">
+                        <a href="https://www.apple.com/macbook-air/" class="bg-blue-500 px-5 py-[0.3em] rounded-full text-white mt-5 ">Learn more</a>
+                        <a href="https://www.apple.com/us/shop/goto/buy_mac/macbook_air" class="text-blue-500 px-5 py-[0.3em] rounded-full mt-5 border-blue-500 border-1 hover:bg-blue-500 hover:text-white ">Buy</a>
+                    </div>
+                </div>
+            </section>
+            <section class="relative flex items-center justify-center overflow-hidden ">
+                <img src="./images/ipad/lg.jpg" alt="iPad Pro" class="object-cover object-center min-h-[600px]">
+                <div class="absolute top-10  left-0 right-0 flex flex-col justify-center items-center text-black">
+                    <h1 class="text-3xl font-medium text-white">iPad Pro</h1>
+                    <p class="text-center text-[1.2em] text-white">Unbelievably thin. Incredibly powerful</p>
+                    <div class="flex gap-4 ">
+                        <a href="https://www.apple.com/ipad-pro/" class="bg-blue-500 px-5 py-[0.3em] rounded-full text-white mt-5 ">Learn more</a>
+                        <a href="https://www.apple.com/us/shop/goto/ipad_pro/select" class="text-blue-500 px-5 py-[0.3em] rounded-full mt-5 border-blue-500 border-1 hover:bg-blue-500 hover:text-white  ">Buy</a>
+                    </div>
+                </div>
+                <div class="absolute bottom-10  left-0 right-0 flex flex-col justify-center items-center">
+                    <h1 class="rainbow-text">Hello, Apple Intelligence.</h1>
+                </div>
+            </section>
+            <section class="relative flex items-center justify-center overflow-hidden ">
+                <img src="./images/trade/lg.jpg" alt="Trade-In Offer" class="object-cover object-center min-h-[600px]">
+                <div class="absolute top-10 left-0 right-0 flex flex-col justify-center items-center text-black">
+                    <div class="flex gap-1  items-center  ">
+                        <img src="./images/logo/apple.svg" alt="Apple logo" class="h-6 w-auto ">
+                        <h1 class="text-3xl font-medium text-black">Trade-In</h1>
+                    </div>
+                    <p class="text-center text-[1.2em] ">Get &#36;180-&#36;650 in credit when<br>you trade in iPhone 12 or higher.<sup>1</sup></p>
+                    <a href="https://www.apple.com/us/shop/goto/trade_in" class="bg-blue-500 px-5 py-[0.3em] rounded-full text-white mt-5 ">Get your estimate</a>
+                </div>
+            </section>
+            <section class="relative flex items-center justify-center overflow-hidden ">
+                <img src="./images/card/lg.jpg" alt="Trade-In Offer" class="object-cover object-center min-h-[600px]">
+                <div class="absolute top-10 left-0 right-0 flex flex-col justify-center items-center text-black">
+                    <div class="flex gap-1  items-center  ">
+                        <img src="./images/logo/apple.svg" alt="Apple logo" class="h-6 w-auto ">
+                        <h1 class="text-3xl font-medium text-black">Card</h1>
+                    </div>
+                    <p class="text-center text-[1.2em] ">Get up to 3% Daily Cash back<br>with every purchase.</p>
+                    <div class="flex gap-4 ">
+                        <a href="https://www.apple.com/apple-card/" class="bg-blue-500 px-5 py-[0.3em] rounded-full text-white mt-5 ">Learn more</a>
+                        <a href="https://card.apple.com/apply/application?referrer=cid%3Dapy-200-10000036&start=false" class="text-blue-500 px-5 py-[0.3em] rounded-full mt-5 border-blue-500 border-1 hover:bg-blue-500 hover:text-white ">Apply Now</a>
+                    </div>
+                </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-200 p-4 text-gray-500 ">
+        <div class="text-sm gap-2 flex flex-col max-w-[1024px] mx-auto">
+            <p>1. Trade‑in values will vary based on the condition, year, and configuration of your eligible trade‑in device. Not all devices are eligible for credit. You must be at least the age of majority to be eligible to trade in for credit or for an Apple Gift Card. Trade‑in value may be applied toward qualifying new device purchase, or added to an Apple Gift Card. Actual value awarded is based on receipt of a qualifying device matching the description provided when estimate was made. Sales tax may be assessed on full value of a new device purchase. In‑store trade‑in requires presentation of a valid photo ID (local law may require saving this information). Offer may not be available in all stores, and may vary between in‑store and online trade‑in. Some stores may have additional requirements. Apple or its trade‑in partners reserve the right to refuse, cancel, or limit quantity of any trade‑in transaction for any reason. More details are available from Apple’s trade-in partner for trade‑in and recycling of eligible devices. Restrictions and limitations may apply.</p>
+            <p >To access and use all Apple Card features and products available only to Apple Card users, you must add Apple Card to Wallet on an iPhone or iPad that supports and has the latest version of iOS or iPadOS. Apple Card is subject to credit approval, available only for qualifying applicants in the United States, and issued by Goldman Sachs Bank USA, Salt Lake City Branch. </p>
+            <p>If you reside in the U.S. territories, please call Goldman Sachs at 877-255-5923 with questions about Apple Card.</p>
+            <p>Learn more about how Apple Card applications are evaluated at 
+                <a class="underline text-gray-700 " href="https://support.apple.com/kb/HT209218">support.apple.com/kb/HT209218</a>
+            </p>
+            <p> Apple Intelligence is available in beta on all iPhone 16 models, iPhone 15 Pro, iPhone 15 Pro Max, iPad mini (A17 Pro), and iPad and Mac models with M1 and later, with Siri and device language set to English (Australia, Canada, Ireland, New Zealand, South Africa, UK, or U.S.), as part of an iOS 18, iPadOS 18, and macOS Sequoia software update. Additional features and languages will be available in April, with more languages coming over the course of the year. Languages supported in 2025 include Chinese, English (India, Singapore), French, German, Italian, Japanese, Korean, Portuguese, Spanish, and Vietnamese.</p>
+            <p>A subscription is required for Apple Arcade, Apple Fitness+, Apple Music, and Apple TV+.</p>
+            <p>Features are subject to change. Some features, applications, and services may not be available in all regions or all languages.</p>
+            <hr>
+        </div>
+        
+
+
+
+    </footer>
+
+   
+</body>
+</html>
